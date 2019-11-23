@@ -25,3 +25,9 @@ class Borrowed(models.Model):
     when = models.DateTimeField(auto_now_add=True)
     returned = models.DateTimeField(null=True, blank=True)
 
+
+class OwnedModel(models.Model):
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    # daonde que vem esse 'settings'????? Tutorial horrível não fala, e da erro nisso. Ja tentei importar de todo lugar
+    class Meta:
+        abstract = True
